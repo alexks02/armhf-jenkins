@@ -1,5 +1,8 @@
 FROM arm32v7/openjdk:8-jdk
 
+COPY bin/ /usr/bin/
+RUN [ "cross-build-start" ]
+
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
 ARG user=jenkins
@@ -80,3 +83,5 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
+
+RUN [ "cross-build-end" ]
