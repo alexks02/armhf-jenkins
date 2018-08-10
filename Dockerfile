@@ -82,5 +82,5 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 
 # Install plugins
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-COPY plugins.txt /plugins.txt
-RUN install-plugins.sh /plugins.txt
+USER root
+RUN /usr/local/bin/install-plugins.sh locale
