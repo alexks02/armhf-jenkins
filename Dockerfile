@@ -83,4 +83,4 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 # Install plugins
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 USER root
-RUN /usr/local/bin/install-plugins.sh locale
+RUN /usr/local/bin/install-plugins.sh cloudbees-folder credentials-binding locale timestamper
