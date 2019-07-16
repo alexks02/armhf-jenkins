@@ -1,0 +1,18 @@
+version: '2'
+services:
+  jenkins:
+    image: alexks02/jenkins:armhf
+    container_name: jenkins
+    ports:
+     - "8080:8080"
+     - "50000:50000"
+    volumes:
+     - jenkins-data:/var/jenkins_home
+    environment:
+     - ADMIN_USERNAME=admin
+     - ADMIN_PASSWORD=pass
+     - JENKINS_URL=http://localhost:8080
+    restart: unless-stopped
+
+volumes:
+  jenkins-data:

@@ -1,8 +1,14 @@
 version: "2"
 services:
-  armhf-jenkins:
-    image: alexks02/armhf-jenkins:latest
-    container_name: armhf-jenkins
+  jenkins-amd64:
+    image: alexks02/jenkins:latest
+    container_name: jenkins
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.amd64
+  jenkins-armhf:
+    image: alexks02/jenkins:armhf
+    container_name: jenkins
+    build:
+      context: .
+      dockerfile: ./Dockerfile.armhf
